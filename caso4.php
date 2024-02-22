@@ -3,24 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario de Subida de Producto</title>
+    <title>Papelería Online</title>
 </head>
 <body>
     <header>
-        <h3>FORMULARIO DE SUBIDA DE PRODUCTO</h3>
+        <h3>Papelería Online</h3>
     </header>
     <section>
         <?php
-        
+        // Verificar si el usuario ha iniciado sesión correctamente
+        $nombre_correcto = 'Jhojan';
+        $pass_correcta = '123'; 
+
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $nombre = $_POST['nombre'] ?? '';
             $pass1 = $_POST['pass1'] ?? '';
             $pass2 = $_POST['pass2'] ?? '';
 
-            $nombre_correcto = 'usuario';
-            $pass_correcta = 'contraseña123'; 
             if ($nombre === $nombre_correcto && $pass1 === $pass_correcta && $pass1 === $pass2) {
-                
+                // Mostrar formulario de subida de producto
                 echo "<h3>Subida de Producto</h3>";
                 echo '<form action="procesar_producto.php" method="post">';
                 echo '<label for="num_serie">Número de Serie:</label>';
@@ -31,15 +32,13 @@
                 echo '<input type="number" id="precio" name="precio"><br>';
                 echo '<input type="submit" value="Subir Producto">';
                 echo '</form>';
-               
-                exit();
             } else {
                 echo "<p style='color: red;'>Las contraseñas no coinciden o los datos de inicio de sesión son incorrectos.</p>";
             }
         }
         ?>
 
-        
+        <!-- Formulario de identificación -->
         <h3>Identificación</h3>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <label for="nombre">Nombre:</label>
